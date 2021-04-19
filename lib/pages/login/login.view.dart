@@ -31,7 +31,6 @@ class LoginView extends ViewModelBuilderWidget<LoginViewModel> {
     Widget child,
   ) {
     return Scaffold(
-        resizeToAvoidBottomPadding: false,
         body: PageView(
           scrollDirection: Axis.vertical,
           controller: model.pageController,

@@ -24,7 +24,6 @@ class HomeView extends ViewModelBuilderWidget<HomeViewModel> {
     Widget child,
   ) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
       body: model.pageList[model.currentIndex]["widget"],
       bottomNavigationBar: BottomNavigationBar(
         items: model.pageList

@@ -28,7 +28,7 @@ class Page1View extends ViewModelBuilderWidget<Page1ViewModel> {
   ) {
     return Center(
       child: Column(children: [
-        RaisedButton(
+        ElevatedButton(
           child: Text('login'),
           onPressed: model.login,
         ),
@@ -37,7 +37,7 @@ class Page1View extends ViewModelBuilderWidget<Page1ViewModel> {
                   '${model.authStore.token}',
                   style: const TextStyle(fontSize: 20),
                 )),
-        RaisedButton(
+        ElevatedButton(
           child: Text('ccc'),
           onPressed: model.test,
         ),

@@ -9,15 +9,12 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       builder: BotToastInit(),
       navigatorObservers: [BotToastNavigatorObserver()],
-      navigatorKey: Modular.navigatorKey,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       // set your initial route
-      initialRoute: "/",
       // add Modular to manage the routing system
-      onGenerateRoute: Modular.generateRoute,
-    );
+    ).modular();
   }
 }
