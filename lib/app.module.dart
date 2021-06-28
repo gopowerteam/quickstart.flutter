@@ -42,12 +42,8 @@ class AppModule extends Module {
   // Provide all the routes for your module
   @override
   final List<ModularRoute> routes = [
-    ChildRoute(
-      '/',
-      child: (context, args) => HomeView(),
-      guards: [AuthGuard()],
-      guardedRoute: '/login'
-    ),
+    ChildRoute('/',
+        child: (context, args) => HomeView(), guards: [AuthGuard()]),
     ChildRoute(
       '/login',
       child: (context, args) => LoginView(),
