@@ -34,16 +34,22 @@ class NetService {
   }
 
   requestInterceptors(Dio dio) {
-    final onResponse = (Response response) async {
-      return response;
+    final onRequest =
+        (RequestOptions options, RequestInterceptorHandler handler) {
+      return handler.next(options);
     };
 
-    final onError = (DioError error) async {
-      return error;
+    final onResponse =
+        (Response response, ResponseInterceptorHandler handler) async {
+      return handler.next(response);
     };
 
-    dio.interceptors
-        .add(InterceptorsWrapper(onResponse: onResponse, onError: onError));
+    final onError = (DioError error, ErrorInterceptorHandler handler) async {
+      return handler.next(error);
+    };
+
+    dio.interceptors.add(InterceptorsWrapper(
+        onRequest: onRequest, onResponse: onResponse, onError: onError));
 
     return dio;
   }
