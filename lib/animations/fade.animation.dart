@@ -15,12 +15,12 @@ class FadeAnimation extends StatelessWidget {
       ..add(
         AniProps.opacity,
         Tween(begin: 0.0, end: 1.0),
-        Duration(milliseconds: 500),
+        const Duration(milliseconds: 500),
       )
       ..add(
         AniProps.translateY,
         Tween(begin: -130.0, end: 0.0),
-        Duration(milliseconds: 500),
+        const Duration(milliseconds: 500),
         Curves.easeOut,
       );
 

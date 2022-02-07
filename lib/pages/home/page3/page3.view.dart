@@ -1,12 +1,12 @@
 // View
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:stacked/stacked.dart';
 import 'page3.viewmodel.dart';
 
 class Page3View extends ViewModelBuilderWidget<Page3ViewModel> {
+  const Page3View({Key key}) : super(key: key);
+
   @override
   bool get reactive => true;
 
@@ -22,15 +22,15 @@ class Page3View extends ViewModelBuilderWidget<Page3ViewModel> {
   @override
   Widget builder(
     BuildContext context,
-    Page3ViewModel model,
+    Page3ViewModel viewModel,
     Widget child,
   ) {
     return Center(
-      child: RaisedButton(
+      child: ElevatedButton(
         onPressed: () {
           Modular.to.pushNamed('video');
         },
-        child: Text("video"),
+        child: const Text("video"),
       ),
     );
   }

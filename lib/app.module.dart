@@ -1,12 +1,10 @@
 // app_module.dart
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:logger/logger.dart';
-import 'package:xbt_app/pages/home/home.view.dart';
-import 'package:xbt_app/pages/login/login.view.dart';
-import 'package:xbt_app/pages/video/video.view.dart';
-import 'package:xbt_app/store/auth.store.dart';
-import 'app.widget.dart';
+import 'package:quickstart_flutter/pages/home/home.view.dart';
+import 'package:quickstart_flutter/pages/login/login.view.dart';
+import 'package:quickstart_flutter/pages/video/video.view.dart';
+import 'package:quickstart_flutter/store/auth.store.dart';
 import 'guards/auth.guard.dart';
 
 class AppModule extends Module {
@@ -43,18 +41,18 @@ class AppModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ChildRoute('/',
-        child: (context, args) => HomeView(), guards: [AuthGuard()]),
+        child: (context, args) => const HomeView(), guards: [AuthGuard()]),
     ChildRoute(
       '/login',
-      child: (context, args) => LoginView(),
+      child: (context, args) => const LoginView(),
     ),
     ChildRoute(
       '/home',
-      child: (context, args) => HomeView(),
+      child: (context, args) => const HomeView(),
     ),
     ChildRoute(
       '/video',
-      child: (context, args) => VideoView(),
+      child: (context, args) => const VideoView(),
     ),
   ];
 }

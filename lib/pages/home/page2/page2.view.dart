@@ -5,6 +5,8 @@ import 'package:stacked/stacked.dart';
 import 'page2.viewmodel.dart';
 
 class Page2View extends ViewModelBuilderWidget<Page2ViewModel> {
+  const Page2View({Key key}) : super(key: key);
+
   @override
   bool get reactive => true;
 
@@ -20,11 +22,11 @@ class Page2View extends ViewModelBuilderWidget<Page2ViewModel> {
   @override
   Widget builder(
     BuildContext context,
-    Page2ViewModel model,
+    Page2ViewModel viewModel,
     Widget child,
   ) {
     return Center(
-      child: Text(model.name),
+      child: Text(viewModel.name),
     );
   }
 }

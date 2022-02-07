@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
-import 'package:xbt_app/core/http/request-service-config.dart';
+import 'package:flutter/material.dart';
+import 'package:quickstart_flutter/core/http/request_service_config.dart';
 
 class RequestOption {
   final Map<String, dynamic> data;

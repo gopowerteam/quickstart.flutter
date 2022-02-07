@@ -1,13 +1,12 @@
 // View
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:stacked/stacked.dart';
-import 'package:xbt_app/store/auth.store.dart';
 import 'page1.viewmodel.dart';
 
 class Page1View extends ViewModelBuilderWidget<Page1ViewModel> {
+  const Page1View({Key key}) : super(key: key);
+
   @override
   bool get reactive => true;
 
@@ -23,23 +22,23 @@ class Page1View extends ViewModelBuilderWidget<Page1ViewModel> {
   @override
   Widget builder(
     BuildContext context,
-    Page1ViewModel model,
+    Page1ViewModel viewModel,
     Widget child,
   ) {
     return Center(
       child: Column(children: [
         ElevatedButton(
-          child: Text('login'),
-          onPressed: model.login,
+          child: const Text('login'),
+          onPressed: viewModel.login,
         ),
         Observer(
             builder: (_) => Text(
-                  '${model.authStore.token}',
+                  viewModel.authStore.token,
                   style: const TextStyle(fontSize: 20),
                 )),
         ElevatedButton(
-          child: Text('ccc'),
-          onPressed: model.test,
+          child: const Text('ccc'),
+          onPressed: viewModel.test,
         ),
       ]),
     );

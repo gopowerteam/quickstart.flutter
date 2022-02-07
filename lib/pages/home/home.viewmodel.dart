@@ -1,5 +1,4 @@
 // ViewModel
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'page1/page1.view.dart';
 import 'page2/page2.view.dart';
@@ -11,18 +10,18 @@ class HomeViewModel extends ChangeNotifier {
   List<Map<String, dynamic>> pageList = [
     {
       "title": 'page1',
-      "icon": Icon(Icons.panorama_fish_eye),
-      "widget": Page1View(),
+      "icon": const Icon(Icons.panorama_fish_eye),
+      "widget": const Page1View(),
     },
     {
       "title": 'page2',
-      "icon": Icon(Icons.school),
-      "widget": Page2View(),
+      "icon": const Icon(Icons.school),
+      "widget": const Page2View(),
     },
     {
       "title": 'page3',
-      "icon": Icon(Icons.people),
-      "widget": Page3View(),
+      "icon": const Icon(Icons.people),
+      "widget": const Page3View(),
     }
   ];
 

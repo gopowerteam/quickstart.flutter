@@ -1,12 +1,13 @@
-// 登录Container
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:xbt_app/animations/fade.animation.dart';
-import 'package:xbt_app/pages/login/login.viewmodel.dart';
+import 'package:quickstart_flutter/animations/fade.animation.dart';
+import 'package:quickstart_flutter/pages/login/login.viewmodel.dart';
 
 class WelcomeScreen extends ViewModelWidget<LoginViewModel> {
+  const WelcomeScreen({Key key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context, LoginViewModel model) {
+  Widget build(BuildContext context, LoginViewModel viewModel) {
     final size = MediaQuery.of(context).size;
     return Stack(
       fit: StackFit.expand,
@@ -22,8 +23,8 @@ class WelcomeScreen extends ViewModelWidget<LoginViewModel> {
           color: Colors.black.withOpacity(0.5),
         ),
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 30),
-          margin: EdgeInsets.symmetric(vertical: 80),
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          margin: const EdgeInsets.symmetric(vertical: 80),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -33,7 +34,7 @@ class WelcomeScreen extends ViewModelWidget<LoginViewModel> {
                 children: <Widget>[
                   FadeAnimation(
                       2.4,
-                      Text(
+                      const Text(
                         "您好",
                         style: TextStyle(
                           color: Colors.white,
@@ -43,7 +44,7 @@ class WelcomeScreen extends ViewModelWidget<LoginViewModel> {
                       )),
                   FadeAnimation(
                     2.6,
-                    Text(
+                    const Text(
                       "欢迎回来",
                       style: TextStyle(
                           color: Colors.white,
@@ -58,7 +59,7 @@ class WelcomeScreen extends ViewModelWidget<LoginViewModel> {
                 children: <Widget>[
                   InkWell(
                     onTap: () {
-                      model.onStart();
+                      viewModel.onStart();
                     },
                     child: Container(
                       height: 60,
@@ -72,7 +73,7 @@ class WelcomeScreen extends ViewModelWidget<LoginViewModel> {
                           width: 1,
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         "登录/注册",
                         style: TextStyle(
                           color: Colors.white,
@@ -82,7 +83,7 @@ class WelcomeScreen extends ViewModelWidget<LoginViewModel> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20)
+                  const SizedBox(height: 20)
                 ],
               )
             ],

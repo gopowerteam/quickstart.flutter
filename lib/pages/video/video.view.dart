@@ -1,10 +1,11 @@
 // View
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'video.viewmodel.dart';
 
 class VideoView extends ViewModelBuilderWidget<VideoViewModel> {
+  const VideoView({Key key}) : super(key: key);
+
   @override
   bool get reactive => true;
 
@@ -20,10 +21,10 @@ class VideoView extends ViewModelBuilderWidget<VideoViewModel> {
   @override
   Widget builder(
     BuildContext context,
-    VideoViewModel model,
+    VideoViewModel viewModel,
     Widget child,
   ) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Text('122'),
       ),

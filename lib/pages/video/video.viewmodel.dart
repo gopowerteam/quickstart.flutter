@@ -14,6 +14,10 @@ class VideoViewModel extends ChangeNotifier {
       Permission.CAMERA,
     ]);
 
-    print(permission);
+    if (permission.containsKey('')) {
+      //TODO
+    }
+
+    // print(permission);
   }
 }

@@ -4,11 +4,11 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 import 'package:rxdart/subjects.dart';
-import 'package:xbt_app/config/app.config.dart';
-import 'package:xbt_app/core/http/request-option.dart';
+import 'package:quickstart_flutter/config/app.config.dart';
+import 'package:quickstart_flutter/core/http/request_option.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart' as pretty;
-import 'package:xbt_app/core/http/request-service-config.dart';
-import 'package:xbt_app/core/model.dart';
+import 'package:quickstart_flutter/core/http/request_service_config.dart';
+import 'package:quickstart_flutter/core/model.dart';
 
 class NetService {
   Dio dio;
@@ -17,36 +17,34 @@ class NetService {
   // private headers = new HttpHeaders()
   // constructor(private http: HttpClient
   NetService() {
-    this.dio = createHttpInstance();
+    dio = createHttpInstance();
     dio.interceptors.add(pretty.PrettyDioLogger());
   }
 
   Dio createHttpInstance() {
-    BaseOptions options = new BaseOptions(
+    BaseOptions options = BaseOptions(
       baseUrl: "https://www.xx.com/api",
       connectTimeout: 5000,
       receiveTimeout: 3000,
     );
 
-    final dio = new Dio(options);
+    final dio = Dio(options);
     requestInterceptors(dio);
     return dio;
   }
 
   requestInterceptors(Dio dio) {
-    final onRequest =
-        (RequestOptions options, RequestInterceptorHandler handler) {
+    onRequest(RequestOptions options, RequestInterceptorHandler handler) {
       return handler.next(options);
-    };
+    }
 
-    final onResponse =
-        (Response response, ResponseInterceptorHandler handler) async {
+    onResponse(Response response, ResponseInterceptorHandler handler) async {
       return handler.next(response);
-    };
+    }
 
-    final onError = (DioError error, ErrorInterceptorHandler handler) async {
+    onError(DioError error, ErrorInterceptorHandler handler) async {
       return handler.next(error);
-    };
+    }
 
     dio.interceptors.add(InterceptorsWrapper(
         onRequest: onRequest, onResponse: onResponse, onError: onError));
@@ -71,23 +69,22 @@ class NetService {
     );
 
     // 通讯成功
-    final onSuccess = (data) {
-      // TODO:处理分页
+    onSuccess(data) {
       final model = T != dynamic ? Model.fromJson(data) : data;
       subject.add(model);
-    };
+    }
 
     // 处理异常
-    final onCatchError = (error) {
+    onCatchError(error) {
       handleError(error);
       subject.addError(error);
-    };
+    }
 
     // 通讯结束
-    final onComplete = () {
+    onComplete() {
       subject.close();
       hideLoading();
-    };
+    }
 
     // 开始请求
     dio
@@ -122,7 +119,7 @@ class NetService {
 
   // 生成
   Map<String, String> generateRequestHeader(RequestOption options) {
-    return options.headers ?? Map();
+    return options.headers ?? {};
   }
 }
 

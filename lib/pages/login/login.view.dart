@@ -1,17 +1,14 @@
 // View
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:stacked/stacked.dart';
-import 'package:xbt_app/animations/fade.animation.dart';
-import 'package:xbt_app/pages/login/components/phone-screen.dart';
-import 'package:xbt_app/pages/login/components/verify-screen.dart';
-import 'package:xbt_app/pages/login/components/welcome-screen.dart';
+import 'package:quickstart_flutter/pages/login/components/phone_screen.dart';
+import 'package:quickstart_flutter/pages/login/components/verify_screen.dart';
+import 'package:quickstart_flutter/pages/login/components/welcome_screen.dart';
 import 'login.viewmodel.dart';
 
 class LoginView extends ViewModelBuilderWidget<LoginViewModel> {
+  const LoginView({Key key}) : super(key: key);
+
   @override
   bool get reactive => true;
 
@@ -27,21 +24,21 @@ class LoginView extends ViewModelBuilderWidget<LoginViewModel> {
   @override
   Widget builder(
     BuildContext context,
-    LoginViewModel model,
+    LoginViewModel viewModel,
     Widget child,
   ) {
     return Scaffold(
         body: PageView(
-          scrollDirection: Axis.vertical,
-          controller: model.pageController,
-          pageSnapping: false,
-          physics: NeverScrollableScrollPhysics(),
-          children: <Widget>[
-            WelcomeScreen(),
-            PhoneScreen(),
-            VerifyScreen(),
-          ],
-        ));
+      scrollDirection: Axis.vertical,
+      controller: viewModel.pageController,
+      pageSnapping: false,
+      physics: const NeverScrollableScrollPhysics(),
+      children: const <Widget>[
+        WelcomeScreen(),
+        PhoneScreen(),
+        VerifyScreen(),
+      ],
+    ));
   }
 
   // @override

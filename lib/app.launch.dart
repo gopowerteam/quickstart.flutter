@@ -2,7 +2,7 @@ import 'package:dart_json_mapper/dart_json_mapper.dart';
 import 'package:dart_json_mapper_flutter/dart_json_mapper_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:xbt_app/app.widget.dart';
+import 'package:quickstart_flutter/app.widget.dart';
 import 'app.module.dart';
 import 'config/app.config.dart';
 import 'app.launch.reflectable.dart' as reflectable;
@@ -15,5 +15,5 @@ void main({String environment}) async {
   // 安装适配器
   JsonMapper().useAdapter(flutterAdapter);
   // 启动APP
-  runApp(ModularApp(module: AppModule(), child: AppWidget()));
+  runApp(ModularApp(module: AppModule(), child: const AppWidget()));
 }

@@ -6,10 +6,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:xbt_app/core/model.dart';
-import 'package:xbt_app/models/user.model.dart';
-import 'package:xbt_app/services/user.service.dart';
-import 'package:xbt_app/store/auth.store.dart';
+import 'package:quickstart_flutter/core/model.dart';
+import 'package:quickstart_flutter/models/user.model.dart';
+import 'package:quickstart_flutter/services/user.service.dart';
+import 'package:quickstart_flutter/store/auth.store.dart';
 
 class LoginViewModel extends ChangeNotifier {
   final userService = UserService();
@@ -24,14 +24,14 @@ class LoginViewModel extends ChangeNotifier {
   Timer timer;
   void onStart() {
     pageController.nextPage(
-      duration: Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 1000),
       curve: Curves.linear,
     );
   }
 
   void onBack() {
     pageController.previousPage(
-      duration: Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 1000),
       curve: Curves.linear,
     );
   }
@@ -42,7 +42,7 @@ class LoginViewModel extends ChangeNotifier {
     // }).listen((data) {
     if (pageController.page != 3) {
       pageController.nextPage(
-        duration: Duration(milliseconds: 1000),
+        duration: const Duration(milliseconds: 1000),
         curve: Curves.linear,
       );
     }
@@ -52,13 +52,13 @@ class LoginViewModel extends ChangeNotifier {
   }
 
   void startTimer() {
-    this.countDown = defaultTimeSpan;
-    this.timer = Timer.periodic(Duration(seconds: 1), (Timer timer) {
+    countDown = defaultTimeSpan;
+    timer = Timer.periodic(const Duration(seconds: 1), (Timer timer) {
       if (countDown < 1) {
         timer.cancel();
       } else {
-        this.countDown -= 1;
-        this.notifyListeners();
+        countDown -= 1;
+        notifyListeners();
       }
     });
   }
@@ -92,7 +92,7 @@ class LoginViewModel extends ChangeNotifier {
 
   // 登录成功
   void loginSuccess(data) async {
-    this.timer.cancel();
+    timer.cancel();
     final preferences = await SharedPreferences.getInstance();
     // 获取用户信息
     // 转为JSON格式

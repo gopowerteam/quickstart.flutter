@@ -1,18 +1,17 @@
-import 'package:flutter/material.dart';
-import 'package:xbt_app/core/http/request-service-config.dart';
+import 'package:quickstart_flutter/core/http/request_service_config.dart';
 
 class UserController {
-  static final service = 'client';
-  static final controller = 'user';
+  static const service = 'client';
+  static const controller = 'user';
 
-  static final sendLoginVerificationCode = RequestServiceConfig(
+  static const sendLoginVerificationCode = RequestServiceConfig(
     service: service,
     controller: controller,
     action: 'sendLoginVerificationCode',
     method: 'POST',
   );
 
-  static final loginByMobile = RequestServiceConfig(
+  static const loginByMobile = RequestServiceConfig(
     service: service,
     controller: controller,
     action: 'loginByMobile',

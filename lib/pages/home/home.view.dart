@@ -1,10 +1,11 @@
 // View
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'home.viewmodel.dart';
 
 class HomeView extends ViewModelBuilderWidget<HomeViewModel> {
+  const HomeView({Key key}) : super(key: key);
+
   @override
   bool get reactive => true;
 
@@ -20,20 +21,20 @@ class HomeView extends ViewModelBuilderWidget<HomeViewModel> {
   @override
   Widget builder(
     BuildContext context,
-    HomeViewModel model,
+    HomeViewModel viewModel,
     Widget child,
   ) {
     return Scaffold(
-      body: model.pageList[model.currentIndex]["widget"],
+      body: viewModel.pageList[viewModel.currentIndex]["widget"],
       bottomNavigationBar: BottomNavigationBar(
-        items: model.pageList
+        items: viewModel.pageList
             .map((page) => BottomNavigationBarItem(
-                icon: page['icon'], title: Text(page['title'])))
+                icon: page['icon'], label: page['title']))
             .toList(),
-        currentIndex: model.currentIndex,
+        currentIndex: viewModel.currentIndex,
         fixedColor: Colors.black,
         type: BottomNavigationBarType.fixed,
-        onTap: model.onChangePage,
+        onTap: viewModel.onChangePage,
       ),
     );
   }

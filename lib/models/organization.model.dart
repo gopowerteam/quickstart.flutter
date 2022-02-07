@@ -1,5 +1,5 @@
 import 'package:dart_json_mapper/dart_json_mapper.dart';
-import 'package:xbt_app/core/model.dart';
+import 'package:quickstart_flutter/core/model.dart';
 
 @jsonSerializable
 class OrganizationModel extends Model {
