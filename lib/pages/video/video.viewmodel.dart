@@ -1,6 +1,6 @@
 // ViewModel
 import 'package:flutter/cupertino.dart';
-import 'package:permissions_plugin/permissions_plugin.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class VideoViewModel extends ChangeNotifier {
   VideoViewModel() {
@@ -8,14 +8,12 @@ class VideoViewModel extends ChangeNotifier {
   }
 
   void checkPermissions() async {
-    Map<Permission, PermissionState> permission =
-        await PermissionsPlugin.requestPermissions([
-      Permission.RECORD_AUDIO,
-      Permission.CAMERA,
-    ]);
+    if (await Permission.camera.status.isGranted == false) {
+      Permission.camera.request();
+    }
 
-    if (permission.containsKey('')) {
-      //TODO
+    if (await Permission.microphone.status.isGranted == false) {
+      Permission.microphone.request();
     }
 
     // print(permission);
